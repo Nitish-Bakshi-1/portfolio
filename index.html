@@ -705,7 +705,7 @@
       /* ---------- projects ---------- */
       .work-grid {
         display: grid;
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: repeat(2, minmax(0, 1fr));
         gap: 30px;
       }
       .card {
@@ -823,6 +823,8 @@
       .card-body h3 {
         font-size: 21px;
         letter-spacing: -0.02em;
+        overflow-wrap: break-word;
+        word-break: break-word;
       }
       .badge {
         font-family: var(--mono);
@@ -1288,6 +1290,14 @@
           margin: 0 12px 24px;
           border: 1px solid var(--line);
           border-radius: 20px;
+          overflow: hidden;
+          max-width: calc(100vw - 24px);
+        }
+        .in {
+          width: 100%;
+          max-width: 100%;
+          padding: 0 16px;
+          box-sizing: border-box;
         }
         .band {
           padding: 62px 0;
@@ -1343,7 +1353,7 @@
         .svc-grid,
         .work-grid,
         .stack-grid {
-          grid-template-columns: 1fr;
+          grid-template-columns: minmax(0, 1fr);
         }
         .stack-grid {
           gap: 28px;
@@ -1352,13 +1362,43 @@
         .tags {
           justify-content: center;
         }
+        .work-grid {
+          width: 100%;
+        }
+        .card {
+          width: 100%;
+          max-width: 100%;
+          box-sizing: border-box;
+        }
+        .shot,
+        .shot-bar,
+        .shot-frame,
+        .card-body {
+          width: 100%;
+          max-width: 100%;
+          box-sizing: border-box;
+        }
+        .card-body {
+          padding: 20px 18px 22px;
+        }
+        .card-body p,
+        .card-body h3 {
+          width: 100%;
+          max-width: 100%;
+          overflow-wrap: break-word;
+          word-break: break-word;
+        }
+        .tags {
+          width: 100%;
+        }
+        .tags span {
+          max-width: 100%;
+          overflow-wrap: break-word;
+        }
         .card-top {
           flex-direction: column;
           align-items: center;
           gap: 8px;
-        }
-        .visit {
-          justify-content: center;
         }
 
         /* timeline becomes a centred stack — no left rail */
@@ -1416,6 +1456,20 @@
         #up {
           right: 14px;
           bottom: 14px;
+        }
+      }
+
+      /* very small phones: keep the nav from overflowing */
+      @media (max-width: 380px) {
+        .navright {
+          gap: 8px;
+        }
+        .navcta {
+          padding: 9px 13px;
+          font-size: 12.5px;
+        }
+        .topbar-in {
+          padding: 0 6px 0 14px;
         }
       }
 
